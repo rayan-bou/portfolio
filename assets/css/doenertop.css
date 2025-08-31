@@ -1,0 +1,27 @@
+/* Styles für die DönerTop Seite */
+
+/* Zurück-Button fixieren */
+.back-home {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1000;
+}
+
+/* Screenshots untereinander */
+#screenshots .screenshot {
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+#screenshots img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+}
+
+#screenshots p {
+    margin-top: var(--space-sm);
+    color: var(--muted);
+}

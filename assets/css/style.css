@@ -246,10 +246,10 @@ section p{
 
 /* -------------------- Video -------------------- */
 .video-embed{ width:100%; overflow:hidden; border-radius:10px; border:none; background:transparent; box-shadow:none; }
-.video-embed iframe{ display:block; width:100%; height:100%; border:0; }
-.video-embed.fullwidth{ position:relative; width:100%; padding-bottom:56.25%; height:0; margin-top:18px; }
+.video-embed iframe{ display:block; width:100%; height:100%; border:0;}
+.video-embed.fullwidth{aspect-ratio: 1920/1007; position:relative; width:100%; padding-bottom:56.25%; height:0; margin-top:18px;}
 .video-embed.fullwidth iframe{ position:absolute; inset:0; width:100%; height:100%; }
-.item .video-embed{ aspect-ratio:16/9; width:100%; margin-left:0; }
+.item .video-embed{ width:100%; margin-left:0; aspect-ratio:1920/1007;}
 
 /* -------------------- Roadmap -------------------- */
 .roadmap{ list-style:none; padding:0; margin:0; display:grid; gap:8px; }
