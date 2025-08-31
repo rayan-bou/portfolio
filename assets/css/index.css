@@ -1,5 +1,7 @@
 /* Styles spezifisch für die Startseite */
 
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
 /* Hintergrundbild für die Guns Out-Karte */
 .card--gunsout{
     position: relative;
@@ -57,6 +59,38 @@
     gap:10px 12px;
 }
 .card--gunsout .facts li{
+    padding:6px 12px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:#f9fafb;
+    color:var(--text);
+    display:inline-flex;
+    align-items:center;
+    line-height:1;
+    font-weight:500;
+}
+
+/* Doenertop-Karte im Stil des Projekt-Hero */
+.card--doenertop{
+    background:#65977f;
+    color:#fff;
+}
+.card--doenertop h3{
+    font-family:'Dela Gothic One', sans-serif;
+    color:#fff;
+}
+.card--doenertop p{
+    color:rgba(255,255,255,.92);
+}
+.card--doenertop .facts{
+    list-style:none;
+    padding:0;
+    margin:12px 0 0 0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 12px;
+}
+.card--doenertop .facts li{
     padding:6px 12px;
     border:1px solid var(--line);
     border-radius:999px;
