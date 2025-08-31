@@ -1,4 +1,5 @@
 /* Styles für die DönerTop Seite */
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
 
 /* Zurück-Button fixieren */
 .back-home {
@@ -17,11 +18,13 @@
     border-bottom:1px solid var(--line);
 }
 .hero h1{
-    font-family:'Delta Gothic One', sans-serif;
+    font-family:'Dela Gothic One', sans-serif;
     font-weight:700;
+    color:#fff;
+    font-size: clamp(6rem, 10vw, 3.5rem);
 }
 .hero .tagline{
-    color:var(--text);
+    color:#fff;
 }
 
 /* Screenshot-Features im Wechsel layouten */
