@@ -38,6 +38,7 @@
 .card{
     padding: 28px 24px;
     min-height: 240px;
+    position: relative;
 }
 
 /* Guns Out: Titel hervorheben */
@@ -100,4 +101,20 @@
     align-items:center;
     line-height:1;
     font-weight:500;
+}
+
+/* Tool-Logos in den Projektkarten */
+.tool-icons{
+    position:absolute;
+    top:12px;
+    right:12px;
+    display:flex;
+    gap:8px;
+    z-index:3;
+}
+
+.tool-icons img{
+    width:24px;
+    height:24px;
+    object-fit:contain;
 }
