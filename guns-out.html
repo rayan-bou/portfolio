@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guns Out – Portfolio</title>
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0d0f14">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Screenshots/Slider */
+        #screenshots .slider-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        #screenshots .slider {
+            width: 100%;
+        }
+        #screenshots .slide {
+            display: none;
+        }
+        #screenshots .slide.active {
+            display: block;
+        }
+        #screenshots .slide img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 75vh; /* passt sich der Seite an, bleibt im Viewport */
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        #screenshots .description {
+            font-size: 1.1rem;
+            color: #111111; /* fast schwarz */
+            margin-top: 8px;
+            text-align: center;
+        }
+        #screenshots .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+            line-height: 1;
+            z-index: 2;
+            user-select: none;
+        }
+        #screenshots .slider-nav.prev { left: 8px; }
+        #screenshots .slider-nav.next { right: 8px; }
+        #screenshots .slider-nav:hover { background: rgba(0,0,0,0.65); }
+        #screenshots .slider-nav:focus {
+            outline: 2px solid #8ab4f8;
+            outline-offset: 2px;
+        }
+
+        /* Hero mit geblurrtem Hintergrundbild statt Farbverlauf */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: none !important; /* überschreibt evtl. vorhandenen Verlauf */
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('assets/img/img_level_1.png') center / cover no-repeat;
+            filter: blur(10px);
+            transform: scale(1.08); /* verhindert sichtbare Ränder durch den Blur */
+            z-index: 0;
+        }
+        .hero > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Roadmap: Cards, zentriert unter der Überschrift, inhaltsbasiert breit */
+        #roadmap .roadmap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 16px;
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            align-items: flex-start;
+            width: fit-content;
+            max-width: 100%;
+            justify-content: center;
+        }
+        /* Roadmap Abschnitt: im normalen Inhaltsfluss, kein full-bleed Hintergrund */
+        #roadmap {
+            margin-top: 32px;
+            padding: 0;
+            border: 0;
+            background: none;
+            position: relative;
+        }
+
+        /* (entfernt) Full-bleed-Hilfsregeln werden nicht mehr benötigt */
+
+        /* Titel und Beschreibung nutzen wieder die Standardfarben des Themes */
+
+        /* Karten-Basisstil mit subtiler 2-Farben-Gradient-Füllung */
+        #roadmap .roadmap li {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.10);
+            background:
+                linear-gradient(135deg, rgba(124, 138, 100, 0.18), rgba(245, 205, 161, 0.18)),
+                rgba(255, 255, 255, 0.82);
+            box-shadow: 0 1.5px 3px rgba(0,0,0,0.18);
+            flex: 0 0 auto; /* Breite durch Inhalt bestimmt */
+            max-width: 100%;
+            font-size: 1.1rem;
+            line-height: 1.25;
+            color: #0d0f14;
+        }
+
+        /* Milchglas für noch anstehende Punkte mit subtiler Verlaufstönung */
+        #roadmap .roadmap li.pending {
+            background:
+                linear-gradient(135deg, rgba(124, 138, 100, 0.14), rgba(245, 205, 161, 0.14)),
+                rgba(255, 255, 255, 0.30);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px) saturate(120%);
+            -webkit-backdrop-filter: blur(10px) saturate(120%);
+        }
+        #roadmap .roadmap li.pending:hover {
+            background:
+                linear-gradient(135deg, rgba(124, 138, 100, 0.18), rgba(245, 205, 161, 0.18)),
+                rgba(255, 255, 255, 0.36);
+        }
+    </style>
+</head>
+<body>
+<a href="index.html" class="btn back-home" aria-label="Zur Startseite" style="position: fixed; top: 16px; left: 16px; z-index: 1000;">← Zurück</a>
+<!-- Hero -->
+<header class="hero hero--dark">
+    <div class="container">
+        <h1>Guns Out</h1>
+        <ul class="facts">
+            <li>In Entwicklung</li>
+            <li>Solo Projekt</li>
+            <li>Self made assets</li>
+            <li>3D Multiplayer</li>
+            <li>Fokus auf Clean Code & Erweiterbarkeit</li>
+        </ul>
+        <p class="tagline">Ein Multiplayer Spiel, bei dem die Spieler zwischen einer Masse von NPCs versteckt agieren
+            und versuchen, unentdeckt zu bleiben, während sie ihre Gegner ausschalten um Geld zu sammeln.</p>
+        <div class="cta">
+            <a href="#gameplay-demo" class="btn primary">Gameplay ansehen</a>
+            <a href="#items" class="btn">Zu den Items</a>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <!-- Gameplay -->
+    <section id="gameplay">
+        <h2>Gameplay</h2>
+        <p>
+            Bei GunsOut geht es darum, die echten Spieler zwischen einer Menge an NPCs zu finden und diese zu eliminieren.
+            Dabei muss jeder Spieler darauf achten, selbst nicht durch das Verwenden von Items oder auffälliges Verhalten
+            aufzufallen.
+        </p>
+        <p>Das Spiel läuft in Runden mit zwei Phasen:</p>
+        <div class="steps">
+            <div class="step step--day" style="display: flex; align-items: center;">
+                <div class="icon"><img src="assets/icons/daycycle_indicator_day.png" alt="Tag"></div>
+                <div>
+                    <h3>Tagsüber</h3>
+                    <p>Items kaufen, Gadgets platzieren und NPCs beobachten, um echte Spieler zu enttarnen.</p>
+                </div>
+            </div>
+            <div class="step step--night" style="display: flex; align-items: center;">
+                <div class="icon"><img src="assets/icons/daycycle_indicator_night.png" alt="Nacht"></div>
+                <div>
+                    <h3>Nachts</h3>
+                    <p>Alle Items und Waffen werden aktiv. Jetzt heißt es: Überleben, unbemerkt zuschlagen und Geld
+                        verdienen.</p>
+                </div>
+            </div>
+        </div>
+        <p>Das Spiel endet nach 3 Runden (Tag&Nacht) und der Gewinner ist der, der am meisten echte Spieler erledingt
+            hat und dabei am wenigsten gestorben ist – auch invalide Kills zählen als Tod.</p>
+        <div class="video-embed fullwidth" id="gameplay-demo">
+            <iframe src="https://www.youtube.com/embed/y7_S0EZ2bMA?modestbranding=1&rel=0&controls=1&iv_load_policy=3&playsinline=1"
+                    title="Gameplay Demo" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Items -->
+    <section id="items">
+        <h2>Items</h2>
+        <p>Items sind im Spiel verfügbare Werkzeuge und Waffen, die strategisch eingesetzt werden können, um andere
+            Spieler zu finden, sich zu verteidigen oder anzugreifen. Jedes Item hat seine eigenen Vor- und Nachteile und
+            kann mit anderen Items kombiniert werden.</p>
+        <div class="item item--smoke">
+            <div>
+                <h3><img class="item-icon" src="assets/icons/smokeCartridge_icon.png" alt=""> Smoke Cartridge</h3>
+                <p>
+                    Erzeugt eine große Wolke aus undurchsichtigem Rauch.
+                    Hilft dabei sich zu verstecken, oder sich wieder unter NPCs zu mischen.
+                    Lässt sich kurzfristig von Explosionen durchdringen.
+                </p>
+            </div>
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/1QE5lsamUz8?modestbranding=1&rel=0&controls=1&iv_load_policy=3&playsinline=1"
+                        title="Smoke Cartridge" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="item item--remote">
+            <div>
+                <h3><img class="item-icon" src="assets/icons/icon_item_remoteBomb.png" alt=""> Remote Bomb</h3>
+                <p>
+                    Ferngezündeter Sprengsatz, der sich aus jeder Distanz aktivieren lässt.
+                    Großer Schaden in einem kleinen Umkreis – gut kombinierbar mit dem Proximity Alarm.
+                    Kann durch andere Explosionen oder Schüsse detoniert werden.
+                </p>
+            </div>
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/phmY6ht5WMc?modestbranding=1&rel=0&controls=1&iv_load_policy=3&playsinline=1"
+                        title="Remote Bomb" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="item item--straw">
+            <div>
+                <h3><img class="item-icon" src="assets/icons/icon_item_weapon.png" alt=""> Straw Rifle</h3>
+                <p>
+                    Improvisiertes Gewehr aus Strohhalmen. Präziser, geringer Schaden auf jede Distanz.
+                    Unbegrenzte Munition.
+                </p>
+            </div>
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/31qbAdlQ4FM?modestbranding=1&rel=0&controls=1&iv_load_policy=3&playsinline=1"
+                        title="Straw Rifle" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="item item--proximity">
+            <div>
+                <h3><img class="item-icon" src="assets/icons/proximityAlarm_icon.png" alt=""> Proximity Alarm</h3>
+                <p>
+                    Schlägt Alarm, sobald sich ein echter Spieler in der Nähe befindet.
+                    Gut einsetzbar bei Engpässen oder Hotspots.
+                    Lässt sich mit Explosionen oder Schüssen zerstören.
+                </p>
+            </div>
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/uULzqVo3rUQ?modestbranding=1&rel=0&controls=1&iv_load_policy=3&playsinline=1"
+                        title="Proximity Alarm" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="item item--maniac">
+            <div>
+                <h3><img class="item-icon" src="assets/icons/maniacMouse_icon.png" alt=""> Maniac Mouse</h3>
+                <p>
+                    Sucht selbstständig den nächsten echten Spieler und fährt zu dessen Position.
+                    Explodiert, sobald der Spieler erreicht wurde, verursacht hohen Schaden.
+                    Lässt sich durch Explosionen oder Schüsse vorzeitig detonieren.
+                </p>
+            </div>
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/KVkTWh-gx4s?modestbranding=1&rel=0&controls=1&iv_load_policy=3&playsinline=1"
+                        title="Maniac Mouse" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section id="screenshots">
+        <h2>Gallerie</h2>
+        <p>Bilder vom Gameplay, Assets und Editor</p>
+        <div class="slider-container">
+            <button class="slider-nav prev" aria-label="Previous image">←</button>
+            <div class="slider">
+                <div class="slide active">
+                    <img src="assets/img/img_editor.png" alt="Level im Editor" loading="lazy">
+                    <p class="description">Das Level im Editor</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_gameplay_1.png" alt="Spielszene bei Tag" loading="lazy">
+                    <p class="description">Spielszene bei Tag - Die Spielfigur zwischen einigen NPCs</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_gameplay_2.png" alt="Item Shop" loading="lazy">
+                    <p class="description">Der Item Shop - Hier können neue Waffen und Gadgets gekauft werden</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_gameplay_3.png" alt="Spielfigur am Küchenfenster" loading="lazy">
+                    <p class="description">Spielfigur am Küchenfenster</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_gameplay_4.png" alt="ProximityAlarms" loading="lazy">
+                    <p class="description">Spielfigur umgeben von inaktiven Proximity Alarms</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_gameplay_5.png" alt="Explosionseffekte" loading="lazy">
+                    <p class="description">Explosionseffekte der Remote Bomb in Aktion</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_gameplay_6.png" alt="Waffe in Aktion" loading="lazy">
+                    <p class="description">Die Spielfigur feuert auf ein Ziel in der Ferne</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_gameplay_7.png" alt="Volumetrische Beleuchtung" loading="lazy">
+                    <p class="description">Das Küchenlevel in volumetrischer Beleuchtung</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_gameplay_8.png" alt="Waffe in Aktion 2" loading="lazy">
+                    <p class="description">Die Spielfigur feuert auf einen vermeintlich echten Spieler</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_gameplay_9.png" alt="Schlafende Maniac Mouse" loading="lazy">
+                    <p class="description">Eine inaktive ManiacMouse, die tagsüber schläft</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_gameplay_10.png" alt="Durchgang" loading="lazy">
+                    <p class="description">Ein Durchgang vom Garten in die Speisekammer</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_level_1.png" alt="Level 1" loading="lazy">
+                    <p class="description">Die Morgensonne scheint durch das Küchenfenster</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_level_2.png" alt="Level 2" loading="lazy">
+                    <p class="description">Außenansicht vom noch unfertigen Haus</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_level_3.png" alt="Level 3" loading="lazy">
+                    <p class="description">Außenansicht vom Garten in Arbeit</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_render_1.png" alt="Mannequin T-Pose" loading="lazy">
+                    <p class="description">Die engine-ready Spielfigur in T-Pose</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_render_2.png" alt="Mannequin mit StrawRifle" loading="lazy">
+                    <p class="description">Die Spielfigur mit einem Straw Rifle</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_render_3.png" alt="Close up von Mannequin mit Straw Rifle" loading="lazy">
+                    <p class="description">Ein Closeup der Spielfigur mit Straw Rifle</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_render_4.png" alt="ManiacMouses" loading="lazy">
+                    <p class="description">3D Modelle der Maniac Mouse - Links high poly, rechts low poly & gebakte Texturen</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_render_5.png" alt="ManiacMouses 2" loading="lazy">
+                    <p class="description">Top-Down Shot des high- und low poly Maniac Mouse 3D Modells</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/img_render_6.png" alt="Assets" loading="lazy">
+                    <p class="description">Diverse haushaltsbezogene Assets, engine-ready aber noch nicht verwendet.</p>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/RenderMaps.png" alt="Explosionseffekte" loading="lazy">
+                    <p class="description">Verschiedene Texturen des Materials für einen Pinsel (engine-ready)</p>
+                </div>
+            </div>
+            <button class="slider-nav next" aria-label="Next image">→</button>
+        </div>
+    </section>
+    
+    <!-- Roadmap -->
+    <section id="roadmap">
+        <h2>Roadmap</h2>
+        <p>
+            Guns Out befindet sich aktuell noch in einer frühen Entwicklungsphase. Demnach gibt es noch viele Dinge,
+            die sich ändern werden. Ein paar der größten Punkte sind:
+        </p>
+        <ul class="roadmap">
+            <li class="pending">NPC-KI verbessern</li>
+            <li class="pending">UI &amp; Menüs überarbeiten</li>
+            <li class="pending">Bugfixes &amp; Quality of Life</li>
+            <li class="pending">Mehr Items &amp; Balancing</li>
+            <li class="pending">Map belebter machen</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Rayan Bouchouareb</p>
+    </div>
+</footer>
+<script>
+    // Einfache Diashow/Slider-Logik
+    document.addEventListener('DOMContentLoaded', function () {
+        const container = document.querySelector('#screenshots .slider-container');
+        if (!container) return;
+
+        const slides = Array.from(container.querySelectorAll('.slide'));
+        const prevBtn = container.querySelector('.slider-nav.prev');
+        const nextBtn = container.querySelector('.slider-nav.next');
+
+        if (slides.length === 0 || !prevBtn || !nextBtn) return;
+
+        let index = slides.findIndex(s => s.classList.contains('active'));
+        if (index < 0) {
+            index = 0;
+            slides[0].classList.add('active');
+        }
+
+        function show(i) {
+            slides[index].classList.remove('active');
+            index = (i + slides.length) % slides.length;
+            slides[index].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => show(index - 1));
+        nextBtn.addEventListener('click', () => show(index + 1));
+
+        // Tastatur-Navigation (links/rechts)
+        container.setAttribute('tabindex', '0');
+        container.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                show(index - 1);
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                show(index + 1);
+            }
+        });
+    });
+</script>
+</body>
+</html>
