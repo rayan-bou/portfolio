@@ -1,0 +1,142 @@
+/* Styles für die Guns Out Seite */
+
+/* Screenshots/Slider */
+#screenshots .slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#screenshots .slider {
+    width: 100%;
+}
+#screenshots .slide {
+    display: none;
+}
+#screenshots .slide.active {
+    display: block;
+}
+#screenshots .slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 75vh; /* passt sich der Seite an, bleibt im Viewport */
+    object-fit: contain;
+    border-radius: 8px;
+}
+#screenshots .description {
+    font-size: 1.1rem;
+    color: #111111; /* fast schwarz */
+    margin-top: 8px;
+    text-align: center;
+}
+#screenshots .slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    line-height: 1;
+    z-index: 2;
+    user-select: none;
+}
+#screenshots .slider-nav.prev { left: 8px; }
+#screenshots .slider-nav.next { right: 8px; }
+#screenshots .slider-nav:hover { background: rgba(0,0,0,0.65); }
+#screenshots .slider-nav:focus {
+    outline: 2px solid #8ab4f8;
+    outline-offset: 2px;
+}
+
+/* Hero mit geblurrtem Hintergrundbild statt Farbverlauf */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: none !important; /* überschreibt evtl. vorhandenen Verlauf */
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('../img/img_level_1.png') center / cover no-repeat;
+    filter: blur(10px);
+    transform: scale(1.08); /* verhindert sichtbare Ränder durch den Blur */
+    z-index: 0;
+}
+.hero > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Roadmap: Cards, zentriert unter der Überschrift, inhaltsbasiert breit */
+#roadmap .roadmap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    align-items: flex-start;
+    width: fit-content;
+    max-width: 100%;
+    justify-content: center;
+}
+/* Roadmap Abschnitt: im normalen Inhaltsfluss, kein full-bleed Hintergrund */
+#roadmap {
+    margin-top: 32px;
+    padding: 0;
+    border: 0;
+    background: none;
+    position: relative;
+}
+
+/* Karten-Basisstil mit subtiler 2-Farben-Gradient-Füllung */
+#roadmap .roadmap li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background:
+        linear-gradient(135deg, rgba(124, 138, 100, 0.18), rgba(245, 205, 161, 0.18)),
+        rgba(255, 255, 255, 0.82);
+    box-shadow: 0 1.5px 3px rgba(0,0,0,0.18);
+    flex: 0 0 auto; /* Breite durch Inhalt bestimmt */
+    max-width: 100%;
+    font-size: 1.1rem;
+    line-height: 1.25;
+    color: #0d0f14;
+}
+
+/* Milchglas für noch anstehende Punkte mit subtiler Verlaufstönung */
+#roadmap .roadmap li.pending {
+    background:
+        linear-gradient(135deg, rgba(124, 138, 100, 0.14), rgba(245, 205, 161, 0.14)),
+        rgba(255, 255, 255, 0.30);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+}
+#roadmap .roadmap li.pending:hover {
+    background:
+        linear-gradient(135deg, rgba(124, 138, 100, 0.18), rgba(245, 205, 161, 0.18)),
+        rgba(255, 255, 255, 0.36);
+}
+
+/* Zurück-Button */
+.back-home {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1000;
+}
+
+/* Step-Layout auf dieser Seite mittig ausrichten */
+.step {
+    align-items: center;
+}

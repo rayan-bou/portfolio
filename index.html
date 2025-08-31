@@ -7,75 +7,7 @@
     <meta name="color-scheme" content="dark">
     <meta name="theme-color" content="#0d0f14">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        /* Hintergrundbild für die Guns Out-Karte */
-        .card--gunsout{
-            position: relative;
-            overflow: hidden;
-            background: none;
-            color: #fff;
-        }
-        .card--gunsout::before{
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url('assets/img/img_level_1.png') center / cover no-repeat;
-            filter: blur(10px);
-            transform: scale(1.08); /* verhindert sichtbare Kanten durch den Blur */
-            z-index: 0;
-        }
-        .card--gunsout::after{
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,.40), rgba(0,0,0,.20));
-            z-index: 1;
-        }
-        .card--gunsout > *{
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Karten deutlich größer */
-        .card-grid{
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 24px;
-        }
-        .card{
-            padding: 28px 24px;
-            min-height: 240px;
-        }
-
-        /* Guns Out: Titel hervorheben */
-        .card--gunsout h3{
-            color:#ffffff;
-        }
-        /* Guns Out: Beschreibungstext hell */
-        .card--gunsout p{
-            color:rgba(255,255,255,.92);
-        }
-
-        /* Facts-Chips in der Karte im selben Stil wie auf der Projektseite */
-        .card--gunsout .facts{
-            list-style:none;
-            padding:0;
-            margin:12px 0 0 0;
-            display:flex;
-            flex-wrap:wrap;
-            gap:10px 12px;
-        }
-        .card--gunsout .facts li{
-            padding:6px 12px;
-            border:1px solid var(--line);
-            border-radius:999px;
-            background:#f9fafb;
-            color:var(--text);
-            display:inline-flex;
-            align-items:center;
-            line-height:1;
-            font-weight:500;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
 <header class="hero">
