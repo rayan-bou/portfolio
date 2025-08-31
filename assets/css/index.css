@@ -1,6 +1,18 @@
 /* Styles spezifisch für die Startseite */
 
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+
+.hero h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 5rem;
+    background: var(--name-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.5));
+}
 
 /* Hintergrundbild für die Guns Out-Karte */
 .card--gunsout{
