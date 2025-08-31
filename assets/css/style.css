@@ -155,12 +155,20 @@ section p{
 }
 
 /* -------------------- Steps -------------------- */
-.steps{
-    display:flex;
-    gap:16px;
-    margin-top:12px;
-    flex-wrap:wrap;
+
+.steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
 }
+
+@media (max-width: 768px) {
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
+
 .step{
     display:flex;
     align-items:flex-start;
@@ -175,15 +183,11 @@ section p{
 
 /* tönende, aber sehr subtile Varianten */
 .step--day{
-    background:
-            linear-gradient(90deg, rgba(245,158,11,.08), rgba(245,158,11,0) 60%),
-            var(--panel);
+    background: #f3e7cf;
     border-color:#f3e7cf;
 }
 .step--night{
-    background:
-            linear-gradient(90deg, rgba(37,99,235,.09), rgba(37,99,235,0) 60%),
-            var(--panel);
+    background: lightslategrey;
     border-color:#e0e7ff;
 }
 
@@ -242,7 +246,7 @@ section p{
     width:clamp(56px,7vw,84px);
     height:clamp(56px,7vw,84px);
 }
-.item > div > p{ font-size:1.125rem; color:var(--muted); }
+.item > div > p{ font-size:1.125rem;}
 
 /* -------------------- Video -------------------- */
 .video-embed{ width:100%; overflow:hidden; border-radius:10px; border:none; background:transparent; box-shadow:none; }

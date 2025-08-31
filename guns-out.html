@@ -23,7 +23,7 @@
             <li>Fokus auf Clean Code & Erweiterbarkeit</li>
         </ul>
         <p class="tagline">Ein Multiplayer Spiel, bei dem die Spieler zwischen einer Masse von NPCs versteckt agieren
-            und versuchen, unentdeckt zu bleiben, während sie ihre Gegner ausschalten um Geld zu sammeln.</p>
+            und versuchen, unentdeckt zu bleiben, während sie ihre Gegner ausschalten, um Geld zu sammeln.</p>
         <div class="cta">
             <a href="#gameplay-demo" class="btn">Gameplay</a>
             <a href="#items" class="btn">Items</a>
@@ -41,26 +41,43 @@
             Dabei muss jeder Spieler darauf achten, selbst nicht durch das Verwenden von Items oder auffälliges Verhalten
             aufzufallen.
         </p>
-        <p>Das Spiel läuft in Runden mit zwei Phasen:</p>
+        <p>
+            Das Spiel dauert 3 Tage zu je 2 Phasen.
+        </p>
         <div class="steps">
             <div class="step step--day">
                 <div class="icon"><img src="assets/icons/daycycle_indicator_day.png" alt="Tag"></div>
                 <div>
                     <h3>Tagsüber</h3>
-                    <p>Items kaufen, Gadgets platzieren und NPCs beobachten, um echte Spieler zu enttarnen.</p>
+                    <ul>
+                        <li>Schaden ist deaktiviert</li>
+                        <li>Gadgets sind platzierbar, aber inaktiv</li>
+                        <li>Shops haben geöffnet</li>
+                    </ul>
                 </div>
             </div>
             <div class="step step--night">
                 <div class="icon"><img src="assets/icons/daycycle_indicator_night.png" alt="Nacht"></div>
                 <div>
                     <h3>Nachts</h3>
-                    <p>Alle Items und Waffen werden aktiv. Jetzt heißt es: Überleben, unbemerkt zuschlagen und Geld
-                        verdienen.</p>
+                    <ul>
+                        <li>Schaden ist aktiv</li>
+                        <li>Gadgets werden aktiviert</li>
+                        <li>Shops schließen</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <p>Das Spiel endet nach 3 Runden (Tag&Nacht) und der Gewinner ist der, der am meisten echte Spieler erledingt
-            hat und dabei am wenigsten gestorben ist – auch invalide Kills zählen als Tod.</p>
+        <p>
+            Geld um neue Items &amp; Gadgets zu kaufen, können Spieler durch Kills echter Spieler oder Überleben
+            einer Nacht erhalten.
+        </p>
+        <p>
+            Wer am Ende die meisten echten Spieler erledigt
+            hat und dabei am wenigsten gestorben ist – auch getötete NPCs zählen als Tode – gewinnt die Runde.
+        </p>
+    </section>
+    <section>
         <div class="video-embed fullwidth" id="gameplay-demo">
             <iframe src="https://www.youtube.com/embed/83VMyGoE9JQ?modestbranding=1&rel=0&controls=1&iv_load_policy=3&playsinline=1"
                     title="Gameplay Demo" allowfullscreen></iframe>
@@ -70,7 +87,7 @@
     <!-- Items -->
     <section id="items">
         <h2>Items</h2>
-        <p>Items sind im Spiel verfügbare Werkzeuge und Waffen, die strategisch eingesetzt werden können, um andere
+        <p>Items sind im Shop erwerbbare Werkzeuge und Waffen, die strategisch eingesetzt werden können, um andere
             Spieler zu finden, sich zu verteidigen oder anzugreifen. Jedes Item hat seine eigenen Vor- und Nachteile und
             kann mit anderen Items kombiniert werden.</p>
         <div class="item item--smoke">
@@ -157,87 +174,87 @@
             <div class="slider">
                 <div class="slide active">
                     <img src="assets/img/img_editor.png" alt="Level im Editor" loading="lazy">
-                    <p class="description">Das Level im Editor</p>
+                    <p class="description">Das Level geöffnet im Godot Editor (Godot)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_gameplay_1.png" alt="Spielszene bei Tag" loading="lazy">
-                    <p class="description">Spielszene bei Tag - Die Spielfigur zwischen einigen NPCs</p>
+                    <p class="description">Spielszene bei Tag - Die Spielfigur zwischen einigen NPCs (In-Game)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_gameplay_2.png" alt="Item Shop" loading="lazy">
-                    <p class="description">Der Item Shop - Hier können neue Waffen und Gadgets gekauft werden</p>
+                    <p class="description">Der Item Shop - Hier können neue Waffen und Gadgets gekauft werden (In-Game)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_gameplay_3.png" alt="Spielfigur am Küchenfenster" loading="lazy">
-                    <p class="description">Spielfigur am Küchenfenster</p>
+                    <p class="description">Spielfigur am Küchenfenster (In-Game)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_gameplay_4.png" alt="ProximityAlarms" loading="lazy">
-                    <p class="description">Spielfigur umgeben von inaktiven Proximity Alarms</p>
+                    <p class="description">Spielfigur umgeben von inaktiven Proximity Alarms (In-Game)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_gameplay_5.png" alt="Explosionseffekte" loading="lazy">
-                    <p class="description">Explosionseffekte der Remote Bomb in Aktion</p>
+                    <p class="description">Explosionseffekte der Remote Bomb in Aktion (In-Game)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_gameplay_6.png" alt="Waffe in Aktion" loading="lazy">
-                    <p class="description">Die Spielfigur feuert auf ein Ziel in der Ferne</p>
+                    <p class="description">Die Spielfigur feuert auf ein Ziel in der Ferne (In-Game)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_gameplay_7.png" alt="Volumetrische Beleuchtung" loading="lazy">
-                    <p class="description">Das Küchenlevel in volumetrischer Beleuchtung</p>
+                    <p class="description">Das Küchenlevel in volumetrischer Beleuchtung (In-Game)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_gameplay_8.png" alt="Waffe in Aktion 2" loading="lazy">
-                    <p class="description">Die Spielfigur feuert auf einen vermeintlich echten Spieler</p>
+                    <p class="description">Die Spielfigur feuert auf einen anderen Spieler (In-Game)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_gameplay_9.png" alt="Schlafende Maniac Mouse" loading="lazy">
-                    <p class="description">Eine inaktive ManiacMouse, die tagsüber schläft</p>
+                    <p class="description">Eine inaktive Maniac Mouse, die tagsüber schläft (In-Game)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_gameplay_10.png" alt="Durchgang" loading="lazy">
-                    <p class="description">Ein Durchgang vom Garten in die Speisekammer</p>
+                    <p class="description">Ein Durchgang vom Garten in die Speisekammer (In-Game)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_level_1.png" alt="Level 1" loading="lazy">
-                    <p class="description">Die Morgensonne scheint durch das Küchenfenster</p>
+                    <p class="description">Die Morgensonne scheint durch das Küchenfenster (Godot)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_level_2.png" alt="Level 2" loading="lazy">
-                    <p class="description">Außenansicht vom noch unfertigen Haus</p>
+                    <p class="description">Außenansicht vom noch unfertigen Haus (Godot)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_level_3.png" alt="Level 3" loading="lazy">
-                    <p class="description">Außenansicht vom Garten in Arbeit</p>
+                    <p class="description">Außenansicht vom Garten in Arbeit (Godot)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_render_1.png" alt="Mannequin T-Pose" loading="lazy">
-                    <p class="description">Die engine-ready Spielfigur in T-Pose</p>
+                    <p class="description">Die engine-ready Spielfigur in T-Pose (Blender)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_render_2.png" alt="Mannequin mit StrawRifle" loading="lazy">
-                    <p class="description">Die Spielfigur mit einem Straw Rifle</p>
+                    <p class="description">Die Spielfigur mit einem Straw Rifle (Blender)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_render_3.png" alt="Close up von Mannequin mit Straw Rifle" loading="lazy">
-                    <p class="description">Ein Closeup der Spielfigur mit Straw Rifle</p>
+                    <p class="description">Ein Closeup der Spielfigur mit Straw Rifle (Blender)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_render_4.png" alt="ManiacMouses" loading="lazy">
-                    <p class="description">3D Modelle der Maniac Mouse - Links high poly, rechts low poly & gebakte Texturen</p>
+                    <p class="description">3D Modelle der Maniac Mouse - Links high poly, rechts low poly & gebakte Texturen (Blender)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_render_5.png" alt="ManiacMouses 2" loading="lazy">
-                    <p class="description">Top-Down Shot des high- und low poly Maniac Mouse 3D Modells</p>
+                    <p class="description">Top-Down Shot des high- und low poly Maniac Mouse 3D Modells (Blender)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/img_render_6.png" alt="Assets" loading="lazy">
-                    <p class="description">Diverse haushaltsbezogene Assets, engine-ready aber noch nicht verwendet.</p>
+                    <p class="description">Diverse haushaltsbezogene Assets; engine-ready, aber noch nicht verwendet (Blender)</p>
                 </div>
                 <div class="slide">
                     <img src="assets/img/RenderMaps.png" alt="Explosionseffekte" loading="lazy">
-                    <p class="description">Verschiedene Texturen des Materials für einen Pinsel (engine-ready)</p>
+                    <p class="description">Verschiedene Texturen des Materials für einen Pinsel (engine-ready, Blender)</p>
                 </div>
             </div>
             <button class="slider-nav next" aria-label="Next image">→</button>
@@ -248,8 +265,9 @@
     <section id="roadmap">
         <h2>Roadmap</h2>
         <p>
-            Guns Out befindet sich aktuell noch in einer frühen Entwicklungsphase. Demnach gibt es noch viele Dinge,
-            die sich ändern werden. Ein paar der größten Punkte sind:
+            Guns Out befindet sich aktuell noch in einer frühen Entwicklungsphase.
+            Viele Gameplay Elemente sind nur teilweise oder noch nicht implementiert. Demnach gibt es noch viele Dinge,
+            die sich ändern werden. Ein paar der größten Punkte die in Zukunft geplant sind, sind:
         </p>
         <ul class="roadmap">
             <li class="pending">NPC-KI verbessern</li>
