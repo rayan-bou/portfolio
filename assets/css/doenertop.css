@@ -8,20 +8,42 @@
     z-index: 1000;
 }
 
-/* Screenshots untereinander */
-#screenshots .screenshot {
+/* Screenshot-Features im Wechsel layouten */
+#screenshots .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
     margin-bottom: var(--space-lg);
     text-align: center;
 }
 
-#screenshots img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+#screenshots .phone-frame {
+    background: #000;
+    padding: 1rem;
+    border-radius: 32px;
     box-shadow: var(--shadow-soft);
+    flex-shrink: 0;
+}
+
+#screenshots .phone-frame img {
+    display: block;
+    height: 500px;
+    width: auto;
+    border-radius: 24px;
 }
 
 #screenshots p {
-    margin-top: var(--space-sm);
+    margin-top: 0;
     color: var(--muted);
+}
+
+@media (min-width: 768px) {
+    #screenshots .feature {
+        flex-direction: row;
+        text-align: left;
+    }
+    #screenshots .feature:nth-child(even) {
+        flex-direction: row-reverse;
+    }
 }
